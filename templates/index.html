@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Weekly</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #2f1175;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header img {
+            max-width: 100%;
+            height: auto;
+        }
+        nav {
+            background-color: #2f1175;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: left;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 40px;
+            font-weight: 600;
+            
+        }
+        #Weekly_Recap {
+            padding: 20px;
+            text-align: left;
+
+        }
+        #player {
+            margin: auto;
+            width: 50%;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="logo.png" alt="Welcome to NBA Weekly"></a>
+    </header>
+    <nav>
+        <a href="About.html">About</a>
+        <a href="News.html">News</a>
+    </nav>
+    <section id="Weekly_Recap">
+        <h2>Weekly Recap</h2>
+        <p>This and this happened</p>
+
+    <!-- Youtube Embedded Video-->
+
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div id="player" ></div>
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: 'lt-ViU17RMg',
+          playerVars: {
+            'playsinline': 1
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
+    </section>
+
+    <!-- End of Youtube Embedded Video-->
+
+
+    <footer>
+        <p>&copy; 2024 Stav Zimerman's Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
